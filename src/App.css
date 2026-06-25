@@ -35,7 +35,31 @@ body {
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: linear-gradient(145deg, #eef2ff 0%, #f0f4ff 50%, #e8f0fe 100%);
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 24px;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+button, input, select, textarea {
+  font-size: 16px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .stat-card:hover,
+  .rules-list li:hover,
+  .btn-submit:hover,
+  .employee-card:hover {
+    transform: none;
+  }
+
+  .btn-sm-approve:hover,
+  .btn-sm-reject:hover,
+  .btn-confirm-approved:hover,
+  .btn-confirm-rejected:hover,
+  .btn-cancel:hover {
+    box-shadow: none;
+  }
 }
 
 @keyframes fadeInUp {
@@ -116,8 +140,7 @@ body {
   color: var(--gray-800);
   padding: 0;
   letter-spacing: -0.3px;
-  line-height: 1.2;
-  white-space: nowrap;
+  line-height: 1.3;
 }
 
 .header-subtitle {
@@ -246,7 +269,6 @@ body {
   color: var(--gray-400);
   font-weight: 500;
   margin-top: 3px;
-  white-space: nowrap;
 }
 
 /* ===== CARDS ===== */
@@ -976,14 +998,15 @@ tbody tr:nth-child(even):hover {
 /* ===== RESPONSIVE: 768px ===== */
 @media (max-width: 768px) {
   body {
-    padding: 12px;
+    padding: 10px;
   }
 
   .header {
     flex-direction: column;
     gap: 12px;
-    padding: 16px 18px;
+    padding: 16px;
     text-align: center;
+    border-radius: 12px;
   }
 
   .header-brand {
@@ -992,53 +1015,88 @@ tbody tr:nth-child(even):hover {
 
   .header h1 {
     font-size: 1.15rem;
-    white-space: normal;
   }
 
   .header-month {
     width: 100%;
     justify-content: center;
+    padding: 8px 12px;
   }
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
 
   .stat-card {
-    padding: 14px;
+    padding: 12px 14px;
+    gap: 12px;
   }
 
   .stat-value {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .stat-icon-box {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .stat-icon-box svg {
+    width: 18px;
+    height: 18px;
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+    margin-bottom: 14px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .card {
-    padding: 18px;
+  .leave-form {
+    gap: 12px;
   }
 
-  .card h2 {
-    font-size: 1.05rem;
-    margin-bottom: 16px;
+  .form-group label {
+    font-size: 0.75rem;
+  }
+
+  textarea {
+    min-height: 70px;
+  }
+
+  .rules-list {
+    gap: 6px;
+  }
+
+  .rules-list li {
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
   .history-header {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+  }
+
+  .history-header h2 {
+    text-align: left;
   }
 
   .filter-controls {
@@ -1067,46 +1125,112 @@ tbody tr:nth-child(even):hover {
 
   .employee-name-section h2 {
     white-space: normal;
+    font-size: 1rem;
+  }
+
+  .employee-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 0.9rem;
+  }
+
+  .employee-stats {
+    gap: 14px;
+  }
+
+  .stat-title {
+    font-size: 0.8rem;
+  }
+
+  .stat-numbers {
+    font-size: 0.8rem;
+  }
+
+  .btn-submit {
+    padding: 14px 28px;
+    font-size: 1rem;
   }
 
   .toast {
-    left: 12px;
-    right: 12px;
-    width: calc(100% - 24px);
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
     max-width: none;
+    top: 10px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
   }
 
   .modal {
-    padding: 24px;
+    padding: 24px 20px;
+    margin: 0 10px;
+  }
+
+  .modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .modal p {
+    font-size: 0.85rem;
   }
 
   .modal-actions {
     flex-direction: column;
+    gap: 8px;
   }
 
   .btn-cancel,
   .btn-confirm-approved,
   .btn-confirm-rejected {
     width: 100%;
+    padding: 14px 24px;
   }
 }
 
 /* ===== RESPONSIVE: 480px ===== */
 @media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  .container {
+    padding: 8px;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .stat-card {
     gap: 12px;
+    padding: 12px;
   }
 
   .stat-value {
     font-size: 1.25rem;
   }
 
-  .container {
-    padding: 0;
+  .stat-icon-box {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .stat-icon-box svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .card {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+    margin-bottom: 12px;
   }
 
   .rules-list li {
@@ -1125,35 +1249,131 @@ tbody tr:nth-child(even):hover {
     border-radius: 0;
     border-left: none;
     border-right: none;
+    margin-left: -14px;
+    margin-right: -14px;
+    width: calc(100% + 28px);
+  }
+
+  .btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .btn-sm-approve {
+    margin-right: 8px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+  }
+
+  .stats-grid {
+    margin-bottom: 12px;
+  }
+
+  .content-grid {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .employee-card-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
 /* ===== RESPONSIVE: 360px ===== */
 @media (max-width: 360px) {
   body {
-    padding: 8px;
+    padding: 6px;
+  }
+
+  .container {
+    padding: 0;
   }
 
   .header {
-    padding: 12px 14px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
 
   .header-logo {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 1rem;
+    border-radius: 8px;
   }
 
   .header h1 {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .header-month {
+    padding: 6px 10px;
+    gap: 10px;
+  }
+
+  .header-month-value {
+    font-size: 0.8rem;
   }
 
   .card {
-    padding: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card h2 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
   }
 
   .stat-card {
-    padding: 12px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .stat-icon-box {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 8px;
+  }
+
+  .stat-icon-box svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .input, select, textarea {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .btn-submit {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .rules-list li {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  .rule-bullet {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    font-size: 0.6rem;
   }
 }
