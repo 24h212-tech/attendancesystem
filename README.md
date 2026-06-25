@@ -1,3 +1,5 @@
+Here you can get the deployed live website: https://24h212-tech.github.io/attendancesystem
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
